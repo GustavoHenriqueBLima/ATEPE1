@@ -5,10 +5,10 @@ using namespace std;
 
 int main(){
 	int n, m;	
-	int x[n], y[n], A[m];
 
 	cout << "Digite o numero de pares ordenados\n";
 	cin >> n;
+  int x[n], y[n];
 	
 //Definir os pares ordenados	
 	for (int i=0; i<n; i++){
@@ -26,6 +26,7 @@ int main(){
 //Definir o conjunto A de onde os pares ordenados devem fazer parte, com m elementos.
 	cout << "Digite o numero de elementos do conjunto original" << endl;
 	cin >> m;
+  int A[m];
 	for (int i=0; i<m; i++){
 		cout << "Digite o elemento de numero " << i+1 << endl;
 		cin >> A[i];
