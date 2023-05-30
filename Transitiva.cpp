@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-
-// Crir um código que verifica se uma relação é SIMETRICA! Dados os pares
+int h;
+// Crir um código que verifica se uma relação é Transitiva! Dados os pares
 // ordenados (x,y) e o conjunto A.
 
 int main() {
@@ -40,37 +40,52 @@ int main() {
     cout << "Elemento " << i + 1 << ":" << A[i] << endl;
   }
 
-  int contador = 0, pertence = 0;
+  int intransitividades = 0;
   // Agora, é necessário percorrer o conjunto R e verificar se ambos os pares
   // ordenados pertencem a A
+  //Para ser transitiva, se (x,y) pertencem a A e (y,z) que também pertence a A, deve existir um par (x,z) em R.
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
       if (x[i] == A[j]) {
         for (int k = 0; k < m; k++) {
           if (y[i] == A[k]) {
             cout << endl
-                 << "O par (" << x[i] << " , " << y[i] << ") pertence a A!"
-                 << endl;
-            pertence++;
+                 << "O par (" << x[i] << " , " << y[i] << ") pertence a A!" << endl;
             for (int l = 0; l < n; l++) {
-              if (x[i] == y[l] && y[i] == x[l]) {
+              if (y[i]==x[l]) {
                 cout << endl 
-                     << "O par (" << x[i] << " , " << y[i]
-                     << ") eh simetrico ao par (" << x[l] << " , " << y[l]
-                     << ")" << endl;
-                contador++;
+                     << "O y -> "<< y[i] << " do par (" << x[i] << " , " << y[i] << ") é igual ao x -> " << x[l] << " do par (" << x[l] << " , " << y[l] << ")" << endl;
+                //Se existe um x[l] que é igual ao nosso y[i], implica que x[l] tem um y[l], e agt precisa verificar se esse tal y[l] pertence ao conjunto A.
+                for(int g=0; g<m; g++){
+                  if(y[l]==A[g]){
+                    //se chegou até aqui, significa que nos encontramos um par x[i] y[i] q pertence a A, encontramos um par x[l] y[l] (com y[i] = x[l]) com ambos os valores pertencentes a A. Agora vamos percorrer todo o R para saber se tem algum par hipotético x[h] y[h] com os valores de x[i] y[l], e ai sim será transitivo.
+                    for(h=0; h<n; h++){
+                      if(x[i]==x[h] && y[l]==y[h]){
+                        cout<< endl << "Como o par (" << x[i] << " , " << y[i] << ") e o par (" << x[l] << " , " << y[l] << ") existem, e o par (" << x[h] << " , " << y[h] << ") existe, EH TRANSITIVO NESSE PAR!" << endl << endl;  
+                      }
+                      else{
+                        intransitividades++;
+                      }
+                      
+                    }
+                  }
+                  
+                    
+                  }
+                }
               }
             }
-            //pertence++;
           }
         }
       }
     }
+
+
+
+
+  //verifica se é transitiva ou n
+  if(h==intransitividades){
+   cout<<"NÃO EH TRANSITIVA";
+  }
   }
 
-  if (contador == pertence) {
-    cout << endl << "S - A RELACAO EH SIMETRICA SIM";
-  } else {
-    cout << endl << "N - A RELACAO NAO EH SIMETRICA NAO";
-  }
-}
