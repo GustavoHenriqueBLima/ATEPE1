@@ -66,12 +66,8 @@ int main() {
                       else{
                         intransitividades++;
                       }
-                      
                     }
-                  }
-                  
-                    
-                  }
+                  }              
                 }
               }
             }
@@ -79,16 +75,17 @@ int main() {
         }
       }
     }
-
-
-
-
-    //verifica se é transitiva ou n
-    if(h==intransitividades){
-     cout<<"\n\nNAO EH TRANSITIVA";
-    }
-    else{
-      cout<<"\n\nEH TRANSITIVA!";
-    }
   }
+
+
+
+
+ //verifica se é transitiva ou n
+   if(h==intransitividades){
+    cout<<"NÃO EH TRANSITIVA";
+   }
+   else{
+     cout<<"EH TRANSITIVA!";
+   }
+}
 
