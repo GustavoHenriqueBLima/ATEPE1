@@ -83,9 +83,12 @@ int main() {
 
 
 
-  //verifica se é transitiva ou n
-  if(h==intransitividades){
-   cout<<"NÃO EH TRANSITIVA";
-  }
+    //verifica se é transitiva ou n
+    if(h==intransitividades){
+     cout<<"\n\nNAO EH TRANSITIVA";
+    }
+    else{
+      cout<<"\n\nEH TRANSITIVA!";
+    }
   }
 
